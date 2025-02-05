@@ -35,6 +35,9 @@ import FormTemplateControl from "components/formControls/FormTemplateControl";
 import type { FormTemplateControlProps } from "components/formControls/FormTemplateControl";
 import MultiFilePickerControl from "components/formControls/MultiFilePickerControl";
 import type { MultipleFilePickerControlProps } from "components/formControls/MultiFilePickerControl";
+import type { RadioButtonControlProps } from "components/formControls/RadioButtonControl";
+import RadioButtonControl from "components/formControls/RadioButtonControl";
+import { RagIntegrations } from "ee/components/formControls/Rag";
 
 /**
  * NOTE: If you are adding a component that uses FormControl
@@ -180,6 +183,19 @@ class FormControlRegistry {
           controlProps: MultipleFilePickerControlProps,
         ): JSX.Element {
           return <MultiFilePickerControl {...controlProps} />;
+        },
+      },
+    );
+    FormControlFactory.registerControlBuilder(formControlTypes.RADIO_BUTTON, {
+      buildPropertyControl(controlProps: RadioButtonControlProps): JSX.Element {
+        return <RadioButtonControl {...controlProps} />;
+      },
+    });
+    FormControlFactory.registerControlBuilder(
+      formControlTypes.RAG_INTEGRATIONS,
+      {
+        buildPropertyControl(controlProps): JSX.Element {
+          return <RagIntegrations {...controlProps} />;
         },
       },
     );
